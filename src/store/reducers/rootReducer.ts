@@ -4,8 +4,8 @@ import loaderReducer from './loader';
 import forecastReducer from './forecast';
 
 const rootReducer = combineReducers({
-  loaderReducer,
-  forecastReducer
+  loader: loaderReducer,
+  forecast: forecastReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
