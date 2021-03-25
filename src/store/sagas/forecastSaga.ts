@@ -8,11 +8,16 @@ import { GetForecastRequest, GET_FORECAST_REQUEST } from '../types/forecast';
 function* loadForecast(action: GetForecastRequest) {
   try {
     yield put(setLoader(true));
+
     const data: IForecastResponse = yield call(fetchForecast, action.cityName);
+
     yield put(getForecastSuccess(data.cityName, data.forecast));
   } catch (err) {
-    yield put(getForecastError(err?.response?.data?.message || 'Failed to receive data'));
+    const errorMessage = err?.response?.data?.message || 'Failed to receive data';
+
+    yield put(getForecastError(Array.isArray(errorMessage) ? errorMessage[0] : errorMessage));
   }
+
   yield put(setLoader(false));
 }
 

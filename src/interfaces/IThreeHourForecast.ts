@@ -1,4 +1,4 @@
 export interface IThreeHourForecast {
-  date: Date;
+  date: number;
   temperature: number;
 }

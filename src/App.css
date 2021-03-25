@@ -29,3 +29,11 @@
   margin: auto;
   padding-top: 50px;
 }
+
+.error-message {
+  color: red;
+}
+
+.custom-tooltip {
+  background-color: #fff;
+}
