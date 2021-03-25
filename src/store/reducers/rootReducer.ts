@@ -8,6 +8,4 @@ const rootReducer = combineReducers({
   forecast: forecastReducer
 });
 
-export type AppState = ReturnType<typeof rootReducer>;
-
 export default rootReducer;

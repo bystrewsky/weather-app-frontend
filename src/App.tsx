@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar';
 import Chart from './components/Chart';
+import SearchBar from './components/SearchBar';
 
-function App(): JSX.Element {
+const App: FunctionComponent = props => {
   return (
     <div className="App">
       <SearchBar />

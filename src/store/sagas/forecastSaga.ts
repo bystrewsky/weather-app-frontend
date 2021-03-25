@@ -2,15 +2,18 @@ import { all, call, fork, put, takeEvery } from '@redux-saga/core/effects';
 import { fetchForecast } from '../../api';
 import { IForecastResponse } from '../../interfaces/IForecastResponse';
 import { getForecastError, getForecastSuccess } from '../actions/forecast';
+import { setLoader } from '../actions/loader';
 import { GetForecastRequest, GET_FORECAST_REQUEST } from '../types/forecast';
 
-function* loadForecast({ cityName }: GetForecastRequest ) {
+function* loadForecast(action: GetForecastRequest) {
   try {
-    const data: IForecastResponse = yield call(fetchForecast, cityName);
+    yield put(setLoader(true));
+    const data: IForecastResponse = yield call(fetchForecast, action.cityName);
     yield put(getForecastSuccess(data.cityName, data.forecast));
   } catch (err) {
-    yield put(getForecastError(err.response.data.message));
+    yield put(getForecastError(err?.response?.data?.message || 'Failed to receive data'));
   }
+  yield put(setLoader(false));
 }
 
 function* watchRequests() {
