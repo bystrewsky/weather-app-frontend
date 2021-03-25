@@ -4,6 +4,7 @@ import { getForecastRequest } from '../store/actions/forecast';
 import { ForecastAction } from '../store/types/forecast';
 
 interface SearchBarProps {
+  // eslint-disable-next-line no-unused-vars
   searchForecast(cityName: string): void;
 }
 

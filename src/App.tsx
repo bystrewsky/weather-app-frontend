@@ -3,7 +3,7 @@ import './App.css';
 import Chart from './components/Chart';
 import SearchBar from './components/SearchBar';
 
-const App: FunctionComponent = props => {
+const App: FunctionComponent = () => {
   return (
     <div className="App">
       <SearchBar />
